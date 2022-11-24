@@ -12,6 +12,11 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+
+// Init Middleware
+app.use(express.json());
+app.use(cors());
+
 app.listen(PORT, () => {
   console.log(`Server Started on Port ${PORT}`);
 });
@@ -27,10 +32,6 @@ const connectDB = async () => {
 };
 
 connectDB();
-
-// Init Middleware
-app.use(express.json());
-app.use(cors());
 
 // Define Routes
 app.use("/api/question", questionRoute);
